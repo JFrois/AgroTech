@@ -24,6 +24,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+button {
+    border: none;
+
+}
 
 #logo_catalogo {
     color: var(--color-neutral-1);
@@ -48,6 +52,64 @@ html, body {
 .catalog {
   padding: 60px 8%;
   background: var(--color-neutral-0);
+}
+
+.listagem {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.botoes {
+    margin: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.botoes button {
+    background: var(--color-primary-4);
+    width: 110px;
+    height: 50px;
+  color: white;
+  padding: 0 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.botoes button:hover {
+    background: var(--color-primary-2);
+    color: var(--color-neutral-1);
+}
+
+.produtos {
+    display: flex;
+    flex-direction: column;
+}
+
+.produto {
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+
+.produto img {
+    border-right: 2px solid black;
+    border-radius: 0 20px 20px 0;
+    flex: 1;
+    max-width: 10%;
+}
+
+.produto .dados_do_produto {
+    margin-left: 5px;
+    flex: 6;
+}
+
+.produto .interesse {
+    flex: 1;    
 }
 
 .filter-card {

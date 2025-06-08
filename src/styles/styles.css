@@ -24,6 +24,10 @@
     box-sizing: border-box;
 }
 
+#logo {
+    color: var(--color-neutral-1);
+}
+
 html {
     scroll-behavior: smooth;
 }
