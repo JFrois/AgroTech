@@ -81,10 +81,16 @@ html, body {
 
 
 .botao_foto_perfil {
-    border: 2px solid var(--color-neutral-1);
+    background: var(--color-primary-4);
     border-radius: 3px;
     margin: 0 auto;
     width: 70%;
+    color: var(--color-neutral-0);
+}
+
+.botao_foto_perfil:active {
+    background: var(--color-primary-3);
+    color: var(--color-neutral-1);
 }
 
 .prof_pic {
