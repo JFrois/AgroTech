@@ -45,6 +45,7 @@ header {
 }
 
 @media screen and (max-width: 1170px) {
+
     #nav_list,
     #navbar .btn-default {
         display: none;
@@ -74,5 +75,5 @@ header {
     #mobile_nav_list .nav-item {
         list-style: none;
         text-align: center;
-    } 
+    }
 }

@@ -14,7 +14,8 @@
 
 #cta .title {
     font-size: 4rem;
-    color: var(--color-neutral-1);;
+    color: var(--color-neutral-1);
+    ;
 }
 
 #cta .title span {
@@ -32,7 +33,8 @@
 
 #cta_buttons a {
     text-decoration: none;
-    color: var(--color-neutral-1);;
+    color: var(--color-neutral-1);
+    ;
 }
 
 #banner {

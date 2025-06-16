@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="src/styles/cadastro.css">
     <title>Criar conta</title>
 </head>
+
 <body>
     <main id="form_container">
         <div id="form_header">
@@ -14,145 +18,89 @@
                 Criar conta
             </h1>
             <button class="btn-default">
-                <a href="index.html" ><i class="fa-solid fa-right-to-bracket">
-                </i>
+                <a href="index.html"><i class="fa-solid fa-right-to-bracket">
+                    </i>
                 </a>
                 </i>
-                
+
             </button>
         </div>
 
         <form action="" id="form">
             <div id="input_container">
                 <div class="input-box">
-                    <label 
-                        for="name" 
-                        class="form-label"
-                    >
+                    <label for="name" class="form-label">
                         Primeiro nome
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="text"
-                            name="name"
-                            id="name"
-                            class="form-control"
-                            placeholder="Fulano"
-                        >
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Fulano">
                         <i class="fa-regular fa-user"></i>
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <label 
-                        for="last_name" 
-                        class="form-label"
-                    >
+                    <label for="last_name" class="form-label">
                         Último nome
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="text"
-                            name="last_name"
-                            id="last_name"
-                            class="form-control"
-                            placeholder="De Tal"
-                        >
+                        <input type="text" name="last_name" id="last_name" class="form-control" placeholder="De Tal">
                         <i class="fa-regular fa-user"></i>
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <label 
-                        for="birthdate" 
-                        class="form-label"
-                    >
+                    <label for="birthdate" class="form-label">
                         Nascimento
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="date"
-                            name="birthdate"
-                            id="birthdate"
-                            class="form-control"
-                        >
+                        <input type="date" name="birthdate" id="birthdate" class="form-control">
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <label 
-                        for="email" 
-                        class="form-label"
-                    >
+                    <label for="email" class="form-label">
                         E-mail
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="email"
-                            name="email"
-                            id="email"
-                            class="form-control"
-                            placeholder="exemplo@gmail.com"
-                        >
+                        <input type="email" name="email" id="email" class="form-control"
+                            placeholder="exemplo@gmail.com">
                         <i class="fa-regular fa-envelope"></i>
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <label 
-                        for="password" 
-                        class="form-label"
-                    >
+                    <label for="password" class="form-label">
                         Senha
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="password"
-                            name="password"
-                            id="password"
-                            class="form-control"
-                            placeholder="*******"
-                        >
+                        <input type="password" name="password" id="password" class="form-control" placeholder="*******">
                         <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
                 </div>
 
                 <div class="input-box">
-                    <label 
-                        for="confirm_password" 
-                        class="form-label"
-                    >
+                    <label for="confirm_password" class="form-label">
                         Confirmar senha
                     </label>
                     <div class="input-field">
-                        <input 
-                            type="password"
-                            name="confirm_password"
-                            id="confirm_password"
-                            class="form-control"
-                            placeholder="*******"
-                        >
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-control"
+                            placeholder="*******">
                         <i class="fa-regular fa-eye-slash password-icon"></i>
                     </div>
                 </div>
 
                 <div class="radio-container">
 
-                 
-                        </div>
-                    </div>
-
 
                 </div>
             </div>
 
+
+            </div>
+            </div>
+
             <div class="checkbox-container">
-                <input 
-                    type="checkbox" 
-                    name="terms" 
-                    id="terms"
-                    class="form-checkbox"
-                >
+                <input type="checkbox" name="terms" id="terms" class="form-checkbox">
                 <label for="terms" class="form-label">
                     Eu li e aceito os <a href="#">termos de uso</a>
                 </label>
@@ -169,4 +117,5 @@
 
     <script src="src/javascript/script.js"></script>
 </body>
+
 </html>
