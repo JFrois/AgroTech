@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $('#mobile_btn').on('click', function () {
         $('#mobile_menu').toggleClass('active');
         $('#mobile_btn').find('i').toggleClass('fa-x');
@@ -19,10 +19,10 @@ $(document).ready(function() {
             header.css('box-shadow', '5px 1px 5px rgba(0, 0, 0, 0.1');
         }
 
-        sections.each(function(i) {
+        sections.each(function (i) {
             const section = $(this);
             const sectionTop = section.offset().top - 96;
-            const sectionBottom = sectionTop+ section.outerHeight();
+            const sectionBottom = sectionTop + section.outerHeight();
 
             if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                 activeSectionIndex = i;
@@ -67,3 +67,21 @@ passwordIcons.forEach(icon => {
         this.classList.toggle('fa-eye');
     })
 })
+
+//Create a send email
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("form");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        emailjs.sendForm('service_ekgmlsj', 'template_00gm37s', form)
+            .then(() => {
+                alert('Mensagem enviada com sucesso!');
+                form.reset();
+            }, (error) => {
+                alert('Ocorreu um erro. Tente novamente.');
+                console.error('FAILED...', error);
+            });
+    });
+});
