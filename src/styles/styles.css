@@ -24,21 +24,18 @@
     box-sizing: border-box;
 }
 
-#logo {
-    color: var(--color-neutral-1);
-}
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    height: 50%;
     background-color: var(--color-primary-1);
 }
 
 section {
     padding: 28px 8%;
-    margin-top: 0 !important;
+    margin-top: 70px !important;
 }
 
 .btn-default {
@@ -153,8 +150,12 @@ body {
     width: 100px;
 }
 
+#contact {
+    height: 10px;
+}
+
 #contact-footer {
+    bottom: 0;
     position: fixed;
     width: 100%;
-    bottom: 0;
 }
