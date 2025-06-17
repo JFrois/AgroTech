@@ -24,21 +24,18 @@
     box-sizing: border-box;
 }
 
-#logo {
-    color: var(--color-neutral-1);
-}
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
+    height: 50%;
     background-color: var(--color-primary-1);
 }
 
 section {
     padding: 28px 8%;
-    margin-top: 0 !important;
+    margin-top: 70px !important;
 }
 
 .btn-default {
@@ -74,7 +71,8 @@ section {
     font-size: 1.25rem;
     border-radius: 10px;
     text-decoration: none;
-    color: var(--color-neutral-1);;
+    color: var(--color-neutral-1);
+    ;
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow .3s ease;
 }
@@ -90,17 +88,24 @@ section {
 
 .section-subtitle {
     font-size: 2.1875rem;
-} 
+}
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+
+#logo {
+    color: var(--color-neutral-1);
+
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #home {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 40px 8% 0;
@@ -114,8 +119,8 @@ html, body {
 }
 
 .shape {
-    display: flex; 
-    height: 120%;  
+    display: flex;
+    height: 120%;
 }
 
 #form {
@@ -124,7 +129,8 @@ html, body {
     flex-direction: column;
 }
 
-#name, #email {
+#name,
+#email {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 1px 1px 4px var(--color-neutral-1);
@@ -150,8 +156,12 @@ html, body {
     width: 100px;
 }
 
+#contact {
+    height: 10px;
+}
+
 #contact-footer {
+    bottom: 0;
     position: fixed;
     width: 100%;
-    bottom: 0;
 }

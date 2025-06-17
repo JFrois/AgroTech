@@ -26,14 +26,15 @@
 
 
 #logo_catalogo {
-    color: var(--color-neutral-1);
+  color: var(--color-neutral-1);
 }
 
 body {
   background-color: var(--color-primary-1);
 }
 
-html, body {
+html,
+body {
   width: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -59,7 +60,8 @@ html, body {
   gap: 10px;
 }
 
-.search-input, .search-button {
+.search-input,
+.search-button {
   height: 50px;
   border: none;
   font-size: 1rem;
@@ -130,11 +132,14 @@ html, body {
   color: var(--color-neutral-1);
 }
 
-.about, .features, footer {
+.about,
+.features,
+footer {
   padding: 60px 8%;
 }
 
-.about-content, .feature-card-block {
+.about-content,
+.feature-card-block {
   background: var(--color-neutral-0);
   border-radius: 8px;
   padding: 20px;
@@ -165,4 +170,3 @@ html, body {
 .right p {
   color: rgba(0, 0, 0, 0.5);
 }
-
