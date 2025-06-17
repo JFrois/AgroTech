@@ -1,6 +1,13 @@
 header {
     width: 100%;
     padding: 27px 8%;
+    background-color: var(--color-primary-6);
+    z-index: 8;
+}
+
+.header_principal {
+    width: 100%;
+    padding: 27px 8%;
     position: fixed;
     top: 0;
     background-color: var(--color-primary-6);
