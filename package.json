@@ -1,0 +1,23 @@
+{
+  "name": "agrotech",
+  "version": "1.0.0",
+  "description": "![Status](https://img.shields.io/badge/status-concluído-green)\r ![Licença](https://img.shields.io/badge/licença-MIT-blue)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.1",
+    "vite": "^7.1.3"
+  }
+}
