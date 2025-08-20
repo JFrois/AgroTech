@@ -14,14 +14,44 @@ function Header() {
             <nav id="navbar">
                 <i class="fa-solid fa-leaf"> AGROTECH | FUTURE IS NOW</i>
                 <ul id="nav_list">
-                    <li class="nav-item active"><a href="index.html">Início</a></li>
-                    <li class="nav-item"><a href="agricultor.html">Sou agricultor</a></li>
-                    <li class="nav-item"><a href="consumidor.html">Sou consumidor</a></li>
-                    <li class="nav-item"><a href="login.html">Ja possuo contato</a></li>
-                    <li class="nav-item"><a href="contato.html">Entre em contato</a></li>
+                    <li class="nav-item active">
+                        <a href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="agricultor.html">Sou agricultor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="consumidor.html">Sou consumidor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.html">Ja possuo contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contato.html">Entre em contato</a>
+                    </li>
                 </ul>
+                <button id="mobile_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
             </nav>
+            <div id="mobile_menu">
+                <ul id="mobile_nav_list">
+                    <li class="nav-item">
+                        <a href="#home">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="agricultor.html">Sou agricultor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="consumidor.html">Sou consumidor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contato.html">Entre em contato</a>
+                    </li>
+                </ul>
+            </div>
         </header>
+
     );
 }
 
