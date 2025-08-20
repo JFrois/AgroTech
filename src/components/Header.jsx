@@ -23,7 +23,7 @@ function Header() {
                         <a href="/consumidor.html">Sou consumidor</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/login.html">Ja possuo contato</a>
+                        <a href="/login.html">Ja possuo conta</a>
                     </li>
                     <li className="nav-item">
                         <a href="/contato.html">Entre em contato</a>
