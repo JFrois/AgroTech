@@ -1,60 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-// Em React, um componente é basicamente uma função JavaScript
-// que retorna um bloco de código que parece HTML (isso é o JSX).
-// O nome da função de um componente sempre começa com letra maiúscula.
 function Header() {
-    const nomeDoProjeto = "AgroTech FIAP";
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        // O JSX parece HTML, mas é mais poderoso.
-        // Usamos 'className' em vez de 'class' para classes CSS.
-        // E podemos inserir variáveis JavaScript usando {chaves}.
-        <header class="header_principal">
+        <header className="header_principal">
             <nav id="navbar">
-                <i class="fa-solid fa-leaf"> AGROTECH | FUTURE IS NOW</i>
+                <i className="fa-solid fa-leaf"> AGROTECH | FUTURE IS NOW</i>
+
                 <ul id="nav_list">
-                    <li class="nav-item active">
-                        <a href="index.html">Início</a>
+                    <li className="nav-item active">
+                        <a href="/index.html">Início</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="agricultor.html">Sou agricultor</a>
+                    <li className="nav-item">
+                        <a href="/agricultor.html">Sou agricultor</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="consumidor.html">Sou consumidor</a>
+                    <li className="nav-item">
+                        <a href="/consumidor.html">Sou consumidor</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="login.html">Ja possuo contato</a>
+                    <li className="nav-item">
+                        <a href="/login.html">Ja possuo contato</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="contato.html">Entre em contato</a>
+                    <li className="nav-item">
+                        <a href="/contato.html">Entre em contato</a>
                     </li>
-                </ul>
-                <button id="mobile_btn">
-                    <i class="fa-solid fa-bars"></i>
+                </ul> {/* FIM da nav_list - A tag extra foi removida daqui */}
+
+                <button id="mobile_btn" onClick={toggleMenu}>
+                    <i className="fa-solid fa-bars"></i>
                 </button>
             </nav>
-            <div id="mobile_menu">
+
+            <div id="mobile_menu" className={isMenuOpen ? 'active' : ''}>
                 <ul id="mobile_nav_list">
-                    <li class="nav-item">
-                        <a href="#home">Início</a>
+                    <li className="nav-item">
+                        <a href="/index.html">Início</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="agricultor.html">Sou agricultor</a>
+                    <li className="nav-item">
+                        <a href="/agricultor.html">Sou agricultor</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="consumidor.html">Sou consumidor</a>
+                    <li className="nav-item">
+                        <a href="/consumidor.html">Sou consumidor</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="contato.html">Entre em contato</a>
+                    <li className="nav-item">
+                        <a href="/contato.html">Entre em contato</a>
                     </li>
                 </ul>
             </div>
         </header>
-
     );
 }
 
-// Nós exportamos o componente para que outros arquivos, como o main.jsx,
-// possam importá-lo e usá-lo.
 export default Header;
