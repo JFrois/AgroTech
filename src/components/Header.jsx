@@ -23,12 +23,12 @@ function Header() {
                         <a href="/consumidor.html">Sou consumidor</a>
                     </li>
                     <li className="nav-item">
-                        <a href="/login.html">Ja possuo contato</a>
+                        <a href="/login.html">Ja possuo conta</a>
                     </li>
                     <li className="nav-item">
                         <a href="/contato.html">Entre em contato</a>
                     </li>
-                </ul> {/* FIM da nav_list - A tag extra foi removida daqui */}
+                </ul>
 
                 <button id="mobile_btn" onClick={toggleMenu}>
                     <i className="fa-solid fa-bars"></i>
