@@ -35,7 +35,8 @@ function FormularioContato() {
     };
 
     return (
-        <section id="contact">
+        <body id="contato">
+            <section id="contact">
             <h2>Entre em contato</h2>
             <form id="form" onSubmit={handleSubmit}>
                 <input
@@ -69,6 +70,7 @@ function FormularioContato() {
                 <button id="enviar" type="submit" className="btn-default">Enviar</button>
             </form>
         </section>
+        </body>
     );
 }
 

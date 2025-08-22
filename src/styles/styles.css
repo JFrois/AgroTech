@@ -158,12 +158,10 @@ body {
     width: 100px;
 }
 
-#contact {
-    height: 10px;
-}
 
-#contact-footer {
-    bottom: 0;
+#contato footer{
+
     position: fixed;
-    width: 100%;
+      bottom: 0;   
+      width: 100%;
 }

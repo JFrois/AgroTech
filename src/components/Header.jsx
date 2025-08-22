@@ -19,10 +19,10 @@ function Header() {
                         <Link to="/">Início</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/agricultor">Sou agricultor</Link>
+                        <Link to="/Central do agricultor">Sou agricultor</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/consumidor">Sou consumidor</Link>
+                        <Link to="/Catalogo de alimentos">Sou consumidor</Link>
                     </li>
                     <li className="nav-item">
                         <Link to="/login">Ja possuo conta</Link>
