@@ -1,4 +1,6 @@
+// src/components/Header.jsx
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,19 +16,19 @@ function Header() {
 
                 <ul id="nav_list">
                     <li className="nav-item active">
-                        <a href="/index.html">Início</a>
+                        <Link to="/">Início</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/agricultor.html">Sou agricultor</a>
+                        <Link to="/agricultor">Sou agricultor</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/consumidor.html">Sou consumidor</a>
+                        <Link to="/consumidor">Sou consumidor</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/login.html">Ja possuo conta</a>
+                        <Link to="/login">Ja possuo conta</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/contato.html">Entre em contato</a>
+                        <Link to="/contato">Entre em contato</Link>
                     </li>
                 </ul>
 
@@ -38,16 +40,16 @@ function Header() {
             <div id="mobile_menu" className={isMenuOpen ? 'active' : ''}>
                 <ul id="mobile_nav_list">
                     <li className="nav-item">
-                        <a href="/index.html">Início</a>
+                        <Link to="/">Início</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/agricultor.html">Sou agricultor</a>
+                        <Link to="/agricultor">Sou agricultor</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/consumidor.html">Sou consumidor</a>
+                        <Link to="/consumidor">Sou consumidor</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/contato.html">Entre em contato</a>
+                        <Link to="/contato">Entre em contato</Link>
                     </li>
                 </ul>
             </div>
