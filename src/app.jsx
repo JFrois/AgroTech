@@ -11,7 +11,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route path="/contato" element={<Contato />} />
+        <Route path="/agricultor" element={<Contato />} />  {/* Adicione o compomente da pagina no element={<Componente />} */}
+        <Route path="/consumidor" element={<Contato />} />  {/* Adicione o compomente da pagina no element={<Componente />} */}
+        <Route path="/login" element={<Contato />} />       {/* Adicione o compomente da pagina no element={<Componente />} */}
+        <Route path="/contato" element={<Contato />} /> 
       </Routes>
       <Footer />
     </BrowserRouter>
