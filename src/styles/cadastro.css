@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,800;1,900&display=swap');
 
 * {
     margin: 0;
@@ -7,12 +7,19 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+.login-page-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.login-main-content {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #87bb78;
+    background-color: #f0f2f5;
+    padding: 2rem;
 }
 
 .btn-default {
@@ -21,7 +28,7 @@ body {
     align-items: center;
     justify-content: center;
     border: none;
-    padding: 8px 12px;
+    padding: 12px;
     border-radius: 8px;
     font-size: 15px;
     font-weight: 500;
@@ -37,55 +44,56 @@ body {
     background-color: #185e03;
 }
 
-#form_container {
+.form-container {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    height: 100%;
+    width: 100%;
+    max-width: 450px;
     background-color: #f6f8ff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0px 10px 25px -3px rgba(0, 0, 0, 0.1);
 }
 
-#form_header {
+.form-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#form_title {
-    font-weight: 500;
+.form-title {
+    font-weight: 600;
+    font-size: 1.8rem;
     color: #272727;
     position: relative;
 }
 
-#form_title::after {
+.form-title::after {
     content: '';
     position: absolute;
-    width: 100px;
-    height: 3px;
+    width: 80px;
+    height: 4px;
     border-radius: 30px;
     background-color: #87bb78;
     left: 0;
-    bottom: 0;
+    bottom: -5px;
 }
 
-#form {
+.login-form {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    gap: 32px;
-    height: 100%;
-}
-
-#input_container {
-    display: grid;
     gap: 24px;
 }
 
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
 .form-label {
-    font-size: 12px;
+    font-size: 14px;
     color: #404044;
     font-weight: 500;
 }
@@ -93,29 +101,30 @@ body {
 .input-field {
     display: flex;
     align-items: center;
-    background-color: #ffff;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    overflow: hidden;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.input-field i {
-    display: flex;
-    align-items: center;
-    width: 30px;
-    height: 20px;
-    color: #404044;
+.input-field svg {
+    padding: 0 12px;
+    color: #888;
+    flex-shrink: 0;
+}
+
+.input-field .password-icon {
+    cursor: pointer;
 }
 
 .form-control {
-    padding: 10px;
-    width: 100%;
+    padding: 12px;
+    flex-grow: 1;
     border: none;
-    border-radius: 8px;
-}
-
-.input-field .password-icon:hover {
-    cursor: pointer;
-    color: #676770;
+    background-color: transparent;
+    color: #333;
+    font-size: 1rem;
 }
 
 .form-control:focus {
@@ -123,47 +132,15 @@ body {
 }
 
 .input-box .input-field:focus-within {
-    outline: 2px solid #87bb78;
+    border-color: #87bb78;
+    box-shadow: 0 0 0 3px rgba(135, 187, 120, 0.2);
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    color: #000;
-}
-
-.radio-container {
-    grid-column: span 2;
-}
-
-#gender_inputs {
-    display: flex;
-    gap: 20px;
-}
-
-.radio-box {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-}
-
-.form-control[type="radio"] {
-    accent-color: #87bb78;
-}
-
-@media screen and (max-width: 500px) {
-    #form_container {
-        width: 100%;
-        min-height: 100vh;
-        padding: 32px;
-    }
-
-    #input_container {
-        display: flex;
-        flex-direction: column;
-        gap: 38px;
-    }
-
-    .form-control[type="date"] {
-        background-color: #fff;
-    }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #333 !important;
+    transition: background-color 5000s ease-in-out 0s;
 }

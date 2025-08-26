@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ScrollReveal from 'scrollreveal';
 
 function MainContent() {
+    useEffect(() => {
+        const sr = ScrollReveal({
+            distance: '20%',
+            duration: 2000,
+            reset: false,
+        });
+
+        sr.reveal('#cta', { origin: 'left' });
+        sr.reveal('.dish', { origin: 'left', delay: 200 });
+        sr.reveal('.feedback', {
+            origin: 'right',
+            duration: 1000,
+            delay: 200,
+        });
+    }, []);
+
     return (
         <main id="content">
             <section id="home">

@@ -1,9 +1,20 @@
-import Login_form from "./Login_form"
+import Header from './Header';
+import Footer from './Footer';
+import LoginForm from './Login_form';
+import '../styles/cadastro.css'; 
 
-function Login(){
-      return(
-            <Login_form />
-      )
+function Login() {
+  return (
+    <div className="login-page-layout">
+      <Header />
+
+      <main className="login-main-content">
+        <LoginForm />
+      </main>
+
+      <Footer />
+    </div>
+  );
 }
 
-export default Login
+export default Login;
