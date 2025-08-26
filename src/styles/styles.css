@@ -158,12 +158,8 @@ body {
     width: 100px;
 }
 
-.footer-normal {
-}
-
 .footer-special {
     position: fixed;
     bottom: 0;   
     width: 100%;
 }
-
