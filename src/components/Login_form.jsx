@@ -44,7 +44,13 @@ function LoginForm() {
         if (foundUser) {
             console.log('Login bem-sucedido para:', foundUser.email);
             alert('Login realizado com sucesso!');
-            navigate('/perfil');
+            if (foundUser.email === 'juan@gmail.com' || foundUser.email === 'maria@gmail.com') {
+                navigate('/perfil');
+            } else {
+                navigate('/Central do agricultor');
+            }
+
+
         } else {
             console.error('Falha no login. Credenciais inválidas.');
             alert('E-mail ou senha incorretos. Tente novamente.');
