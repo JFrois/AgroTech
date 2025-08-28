@@ -7,6 +7,7 @@ import Inicio from './components/inicio.jsx';
 import AreaFazendeiro from './components/AreaFazendeiro.jsx';
 import Catalogo from './components/Catalogo.jsx';
 import Login from './components/Login.jsx';
+import CriarConta from './components/CriarConta.jsx';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Contato" element={<Contato />} />
         <Route path="/Perfil" element={<Catalogo />} />
-
+        <Route path="/Criar conta" element={<CriarConta />} />
       </Routes>
       <Footer />
     </BrowserRouter>
