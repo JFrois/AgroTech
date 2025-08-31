@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 const navLinks = [
     { path: '/', label: 'Início' },
-    { path: '/Central do agricultor', label: 'Sou agricultor' },
-    { path: '/Catalogo de alimentos', label: 'Sou consumidor' },
+    { path: '/Criar conta', label: 'Sou agricultor' },
+    { path: '/Criar conta', label: 'Sou consumidor' },
     { path: '/login', label: 'Já possuo conta' },
     { path: '/contato', label: 'Entre em contato' },
 ];
