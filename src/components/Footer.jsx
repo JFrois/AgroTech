@@ -8,7 +8,7 @@ function Footer() {
 
     return (
         <footer className={isSpecialFooter ? 'footer-special' : 'footer-normal'}>
-            <img src="/src/images/wave.svg" alt="onda decorativa do rodapé" />
+            <img src="/images/wave.svg" alt="onda decorativa do rodapé" />
             <div id="footer_items">
                 <span id="copyright">
                     &copy; 2025 AgroTech FIAP

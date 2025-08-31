@@ -35,7 +35,7 @@ function MainContent() {
                     </p>
                 </div>
                 <div id="banner">
-                    <img src="/src/images/hero.png" alt="Banner principal" />
+                    <img src="/images/hero.png" alt="Banner principal" />
                 </div>
             </section>
 
@@ -46,7 +46,7 @@ function MainContent() {
                     <div className="dish">
                         <div className="dish-heart"></div>
                         <h3 className="dish-title">AgroTech</h3>
-                        <img src="/src/images/troca.png" alt="Ícone de troca" />
+                        <img src="/images/troca.png" alt="Ícone de troca" />
                         <span className="dish-description">
                             <h4>Conectando o agricultor com o consumidor</h4>
                             <p>
@@ -68,7 +68,7 @@ function MainContent() {
                     <h3 className="section-subtitle">O que os clientes falam sobre nós</h3>
                     <div id="feedbacks">
                         <div className="feedback">
-                            <img src="/src/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
+                            <img src="/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
                             <div className="feedback-content">
                                 <p>
                                     João da Silva
@@ -84,7 +84,7 @@ function MainContent() {
                             </div>
                         </div>
                         <div className="feedback">
-                            <img src="/src/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
+                            <img src="/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
                             <div className="feedback-content">
                                 <p>
                                     Benina Oliveira

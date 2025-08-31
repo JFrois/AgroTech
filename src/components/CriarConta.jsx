@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faUser, faEnvelope, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 function CriarConta({ onAddUser }) {
+    // Hooks agora estão DENTRO do componente
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -16,6 +18,29 @@ function CriarConta({ onAddUser }) {
         terms: false,
         userType: '',
     });
+
+    // Este useEffect lê o parâmetro da URL e atualiza o estado
+    useEffect(() => {
+        const userTypeFromURL = searchParams.get('tipo');
+        if (userTypeFromURL) {
+            setFormData(prevData => ({ ...prevData, userType: userTypeFromURL }));
+        }
+    }, [searchParams]);
+
+    // Este useEffect é para a animação ScrollReveal
+    useEffect(() => {
+        if (window.ScrollReveal) {
+            const sr = window.ScrollReveal({
+                distance: '50px',
+                duration: 2000,
+                reset: false,
+            });
+            sr.reveal('#form_header', { origin: 'top' });
+            sr.reveal('.input-box', { origin: 'bottom', interval: 100 });
+            sr.reveal('.btn-default', { origin: 'bottom', delay: 500 });
+        }
+    }, []);
+
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -50,10 +75,8 @@ function CriarConta({ onAddUser }) {
 
         const wasUserAdded = onAddUser(newUser);
 
-        // Somente navega se o usuário foi realmente adicionado
         if (wasUserAdded) {
             alert("Conta criada com sucesso!");
-
             if (formData.userType === 'agricultor') {
                 navigate('/Central do agricultor');
             } else {
@@ -62,19 +85,7 @@ function CriarConta({ onAddUser }) {
         }
     };
 
-    useEffect(() => {
-        if (window.ScrollReveal) {
-            const sr = window.ScrollReveal({
-                distance: '50px',
-                duration: 2000,
-                reset: false,
-            });
-            sr.reveal('#form_header', { origin: 'top' });
-            sr.reveal('.input-box', { origin: 'bottom', interval: 100 });
-            sr.reveal('.btn-default', { origin: 'bottom', delay: 500 });
-        }
-    }, []);
-
+    // O resto do seu JSX continua o mesmo
     return (
         <main className="form-container">
             <div className="form-header">
@@ -94,6 +105,7 @@ function CriarConta({ onAddUser }) {
                             <FontAwesomeIcon icon={faUser} />
                         </div>
                     </div>
+                    {/* ... outros input-box ... */}
                     <div className="input-box">
                         <label htmlFor="lastName" className="form-label">Último nome</label>
                         <div className="input-field">
