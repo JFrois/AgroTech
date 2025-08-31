@@ -76,17 +76,17 @@ function CriarConta({ onAddUser }) {
     }, []);
 
     return (
-        <main id="form_container">
-            <div id="form_header">
-                <h1 id="form_title">Criar conta</h1>
+        <main className="form-container">
+            <div className="form-header">
+                <h1 className="form-title">Criar conta</h1>
                 <Link to="/" className="btn-default">
                     <FontAwesomeIcon icon={faRightToBracket} />
                 </Link>
             </div>
 
-            <form id="form" onSubmit={handleSubmit}>
+            <form className="form" onSubmit={handleSubmit}>
                 {/* Seu JSX do formulário continua o mesmo aqui... */}
-                <div id="input_container">
+                <div className="input-container">
                     <div className="input-box">
                         <label htmlFor="firstName" className="form-label">Primeiro nome</label>
                         <div className="input-field">
