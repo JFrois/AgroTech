@@ -28,6 +28,8 @@
     box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.1);
     position-anchor: relative;
     overflow: hidden;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 
