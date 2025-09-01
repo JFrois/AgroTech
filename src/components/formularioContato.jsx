@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
+emailjs.init("14op60W9c1h0olQZa");
 
 function FormularioContato() {
     const [formData, setFormData] = useState({
@@ -6,6 +9,7 @@ function FormularioContato() {
         email: '',
         message: '',
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -17,26 +21,28 @@ function FormularioContato() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-        })
-        .then((response) => {
-            console.log('SUCCESS!', response.status, response.text);
-            alert('Mensagem enviada com sucesso!');
-            setFormData({ name: '', email: '', message: '' });
-        })
-        .catch((error) => {
-            console.error('FAILED...', error);
-            alert('Falha ao enviar mensagem.');
-        });
+        const serviceID = "service_ekgmlsj";
+        const templateID = "template_00gm37s";
+
+        emailjs.send(serviceID, templateID, formData)
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Mensagem enviada com sucesso!');
+                setFormData({ name: '', email: '', message: '' });
+            })
+            .catch((error) => {
+                console.error('FAILED...', error);
+                alert('Falha ao enviar mensagem. Tente novamente.');
+            })
+            .finally(() => {
+                setIsSubmitting(false);
+            });
     };
 
     return (
-        <body id="contato">
-            <section id="contact">
+        <section id="contact">
             <h2>Entre em contato</h2>
             <form id="form" onSubmit={handleSubmit}>
                 <input
@@ -46,6 +52,7 @@ function FormularioContato() {
                     placeholder="Seu nome"
                     value={formData.name}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     required
                 />
                 <input
@@ -55,6 +62,7 @@ function FormularioContato() {
                     placeholder="Seu email"
                     value={formData.email}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     required
                 />
                 <textarea
@@ -65,12 +73,19 @@ function FormularioContato() {
                     maxLength="500"
                     value={formData.message}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     required
                 ></textarea>
-                <button id="enviar" type="submit" className="btn-default">Enviar</button>
+                <button
+                    id="enviar"
+                    type="submit"
+                    className="btn-default"
+                    disabled={isSubmitting}
+                >
+                    {isSubmitting ? 'Enviando...' : 'Enviar'}
+                </button>
             </form>
         </section>
-        </body>
     );
 }
 

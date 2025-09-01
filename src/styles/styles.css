@@ -158,10 +158,8 @@ body {
     width: 100px;
 }
 
-
-#contato footer{
-
+.footer-special {
     position: fixed;
-      bottom: 0;   
-      width: 100%;
+    bottom: 0;   
+    width: 100%;
 }

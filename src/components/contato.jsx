@@ -1,12 +1,12 @@
 import FormularioContato from "./formularioContato";
 import '../styles/styles.css';
 
-function contato(){
-      return(
-      <>
-            <FormularioContato />
-      </>
+function Contato() {
+      return (
+            <>
+                  <FormularioContato />
+            </>
       )
 }
 
-export default contato
+export default Contato
