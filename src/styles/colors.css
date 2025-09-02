@@ -11,6 +11,7 @@
     --color-neutral-2: #2b2b2b;
     --color-neutral-0: #fff;
     --color-neutral-1: #1d1d1d;
+    --color-neutral-3: #44d36f;
 
 }
 
@@ -24,8 +25,8 @@ html.dark-mode{
     --color-primary-7: #1a1a1a;
     --color-primary-8: #ffffff;
 
-    --color-neutral-2: #0a9d00;
     --color-neutral-0: #232323;
     --color-neutral-1: #ffffff;
-
+    --color-neutral-2: #0a9d00;
+    --color-neutral-3: #44d36f;
 }

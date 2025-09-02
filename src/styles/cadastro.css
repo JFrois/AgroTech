@@ -91,7 +91,7 @@
 
 .form-label {
     font-size: 14px;
-    color:var((--color-primary-8)) ;
+    color:var( --color-neutral-1) ;
     font-weight: 500;
 }
 
