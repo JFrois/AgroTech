@@ -112,13 +112,16 @@ body {
     height: 100%;
 }
 
-p{
+p {
     color: var(--color-neutral-1);
 }
-h3{
+
+h2,
+h3 {
     color: var(--color-neutral-1);
 }
-h4{
+
+h4 {
     color: var(--color-neutral-3);
 }
 
@@ -164,6 +167,6 @@ h4{
 
 .footer-special {
     position: fixed;
-    bottom: 0;   
+    bottom: 0;
     width: 100%;
 }
