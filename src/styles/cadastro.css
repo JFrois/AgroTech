@@ -18,12 +18,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f2f5;
+    background-color: var(--color-primary-7);
     padding: 2rem;
 }
 
 .btn-default {
-    background-color: #87bb78;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +31,6 @@
     border-radius: 8px;
     font-size: 15px;
     font-weight: 500;
-    color: #ffffff;
     cursor: pointer;
     gap: 8px;
     height: fit-content;
@@ -40,9 +38,7 @@
     transition: background-color 0.3s ease;
 }
 
-.btn-default:hover {
-    background-color: #185e03;
-}
+
 
 .form-container {
     display: flex;
@@ -50,7 +46,7 @@
     gap: 32px;
     width: 100%;
     max-width: 450px;
-    background-color: #f6f8ff;
+    background-color:var(--color-primary-7) ;
     padding: 2.5rem;
     border-radius: 16px;
     box-shadow: 0px 10px 25px -3px rgba(0, 0, 0, 0.1);
@@ -66,7 +62,7 @@
 .form-title {
     font-weight: 600;
     font-size: 1.8rem;
-    color: #272727;
+    color: var(--color-neutral-1);
     position: relative;
 }
 
@@ -76,7 +72,7 @@
     width: 80px;
     height: 4px;
     border-radius: 30px;
-    background-color: #87bb78;
+    background-color: var(--color-neutral-1) ;
     left: 0;
     bottom: -5px;
 }
@@ -95,23 +91,23 @@
 
 .form-label {
     font-size: 14px;
-    color: #404044;
+    color:var((--color-primary-8)) ;
     font-weight: 500;
 }
 
 .input-field {
     display: flex;
     align-items: center;
-    background-color: #fff;
+    background-color:var(--color-primary-1) ;
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid ;
     overflow: hidden;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-field svg {
     padding: 0 12px;
-    color: #888;
+    color:var(--color-neutral-1) ;
     flex-shrink: 0;
 }
 
@@ -124,7 +120,7 @@
     flex-grow: 1;
     border: none;
     background-color: transparent;
-    color: #333;
+    color: var(--color-neutral-1) ;
     font-size: 1rem;
 }
 
@@ -133,7 +129,7 @@
 }
 
 .input-box .input-field:focus-within {
-    border-color: #87bb78;
+    border-color: var(--color-neutral-1) ;
     box-shadow: 0 0 0 3px rgba(135, 187, 120, 0.2);
 }
 
@@ -141,7 +137,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
-    -webkit-text-fill-color: #333 !important;
+    -webkit-box-shadow: 0 0 0 1000px  inset !important;
+    -webkit-text-fill-color:var(--color-neutral-1)  !important;
     transition: background-color 5000s ease-in-out 0s;
 }
