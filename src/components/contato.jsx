@@ -1,4 +1,4 @@
-import FormularioContato from "./formularioContato";
+import FormularioContato from "./FormularioContato";
 import '../styles/styles.css';
 
 function Contato() {
