@@ -66,7 +66,7 @@ Através de uma interface intuitiva, agricultores podem listar seus produtos, e 
 
 ## 🎥 Demonstração
 
-Assista a um vídeo rápido mostrando a plataforma em ação:
+Assista a um vídeo rápido mostrando a plataforma em ação: **WIP**
 
 [https://www.youtube.com/watch?v=SEU_VIDEO_ID](https://www.youtube.com/watch?v=SEU_VIDEO_ID)
 ---
