@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
@@ -49,25 +50,29 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/Central do agricultor" element={<AreaFazendeiro />} />
-        <Route path="/Catalogo de alimentos" element={<Catalogo />} />
-        <Route path="/Contato" element={<Contato />} />
-        <Route path="/Perfil" element={<Catalogo />} />
-        <Route
-          path="/Login"
-          element={<Login users={users} />}
-        />
-        <Route
-          path="/Criar conta"
-          element={<CriarConta onAddUser={handleAddUser} />}
-        />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <>
+      <Analytics />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/Central do agricultor" element={<AreaFazendeiro />} />
+          <Route path="/Catalogo de alimentos" element={<Catalogo />} />
+          <Route path="/Contato" element={<Contato />} />
+          <Route path="/Perfil" element={<Catalogo />} />
+          <Route
+            path="/Login"
+            element={<Login users={users} />}
+          />
+          <Route
+            path="/Criar conta"
+            element={<CriarConta onAddUser={handleAddUser} />}
+          />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
+
   );
 }
 
