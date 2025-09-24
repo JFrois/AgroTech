@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './app.jsx'; // Importe o componente App
+import App from './app.jsx'; 
 
 import './styles/styles.css';
 import './styles/cadastro.css';

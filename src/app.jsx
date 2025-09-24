@@ -9,7 +9,8 @@ import Catalogo from './components/Catalogo.jsx';
 import Login from './components/Login.jsx';
 import CriarConta from './components/CriarConta.jsx';
 import Perfil from './components/Perfil.jsx';
-import Avaliacao from './components/Avaliacoes.jsx';
+// Corrigido: O nome do componente importado agora corresponde ao nome do arquivo
+import Avaliacoes from './components/Avaliacoes.jsx';
 
 function App() {
   // --- ESTADO DOS USUÁRIOS ---
@@ -79,9 +80,6 @@ function App() {
     { id: 1, nome: 'Milho', img: '/images/milho.png', desc: 'Descrição sobre a qualidade do milho.' },
     { id: 2, nome: 'Tomate', img: '/images/tomate.png', desc: 'Descrição sobre a qualidade do tomate.' },
     { id: 3, nome: 'Alface', img: '/images/alface.png', desc: 'Descrição sobre a qualidade do alface.' },
-    { id: 4, nome: 'Cenoura', img: '/images/cenoura.png', desc: 'Descrição sobre a qualidade da cenoura.' },
-    { id: 5, nome: 'Cebola', img: '/images/cebola.png', desc: 'Descrição sobre a qualidade da cebola.' },
-    { id: 6, nome: 'Abóbora', img: '/images/abobora.png', desc: 'Descrição sobre a qualidade da abóbora.' },
   ]);
 
   return (
@@ -95,7 +93,8 @@ function App() {
         <Route path="/Perfil" element={<Perfil user={loggedInUser} onLogout={handleLogout} />} />
         <Route path="/Login" element={<Login users={users} onLogin={handleLogin} />} />
         <Route path="/Criar conta" element={<CriarConta onAddUser={handleAddUser} />} />
-        <Route path="/Avaliacoes" element={<Avaliacao onAddAvaliacao={handleAddAvaliacao} />} />
+        {/* Corrigido: Usando o nome correto do componente importado */}
+        <Route path="/Avaliacoes" element={<Avaliacoes onAddAvaliacao={handleAddAvaliacao} />} />
       </Routes>
       <Footer />
     </BrowserRouter>

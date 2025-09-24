@@ -3,8 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faStar, faComment, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-function Avaliacao({ onAddAvaliacao }) {
-    const navigate = useNavigate(); // Hook para redirecionar
+// Corrigido: O nome da função agora é 'Avaliacoes' para corresponder ao nome do arquivo
+function Avaliacoes({ onAddAvaliacao }) {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({ nota: '', comentario: '' });
 
     const handleChange = (e) => {
@@ -18,11 +19,8 @@ function Avaliacao({ onAddAvaliacao }) {
             alert('Por favor, preencha a nota e o comentário.');
             return;
         }
-
         onAddAvaliacao(formData);
-
         alert('Obrigado pela sua avaliação!');
-
         navigate('/');
     };
 
@@ -63,4 +61,4 @@ function Avaliacao({ onAddAvaliacao }) {
     );
 }
 
-export default Avaliacao;
+export default Avaliacoes;
