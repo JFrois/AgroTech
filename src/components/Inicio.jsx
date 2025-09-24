@@ -1,9 +1,10 @@
+import React from 'react';
 import MainContent from './MainContent.jsx';
 
-function Inicio() {
+function Inicio({ avaliacoes }) {
     return (
         <>
-            <MainContent />
+            <MainContent avaliacoes={avaliacoes} />
         </>
     );
 }

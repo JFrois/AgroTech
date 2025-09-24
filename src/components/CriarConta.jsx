@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faUser, faEnvelope, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 function CriarConta({ onAddUser }) {
-    // Hooks agora estão DENTRO do componente
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
 
@@ -19,28 +18,12 @@ function CriarConta({ onAddUser }) {
         userType: '',
     });
 
-    // Este useEffect lê o parâmetro da URL e atualiza o estado
     useEffect(() => {
         const userTypeFromURL = searchParams.get('tipo');
         if (userTypeFromURL) {
             setFormData(prevData => ({ ...prevData, userType: userTypeFromURL }));
         }
     }, [searchParams]);
-
-    // Este useEffect é para a animação ScrollReveal
-    useEffect(() => {
-        if (window.ScrollReveal) {
-            const sr = window.ScrollReveal({
-                distance: '50px',
-                duration: 2000,
-                reset: false,
-            });
-            sr.reveal('#form_header', { origin: 'top' });
-            sr.reveal('.input-box', { origin: 'bottom', interval: 100 });
-            sr.reveal('.btn-default', { origin: 'bottom', delay: 500 });
-        }
-    }, []);
-
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -52,8 +35,6 @@ function CriarConta({ onAddUser }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Validações
         if (formData.password !== formData.confirmPassword) {
             alert("As senhas não coincidem!");
             return;
@@ -68,6 +49,7 @@ function CriarConta({ onAddUser }) {
         }
 
         const newUser = {
+            firstName: formData.firstName, // Adicionado
             email: formData.email,
             password: formData.password,
             userType: formData.userType
@@ -85,18 +67,15 @@ function CriarConta({ onAddUser }) {
         }
     };
 
-    // O resto do seu JSX continua o mesmo
     return (
         <main className="form-container">
             <div className="form-header">
                 <h1 className="form-title">Criar conta</h1>
-                <Link to="/" className="btn-default">
+                <Link to="/Login" className="btn-default">
                     <FontAwesomeIcon icon={faRightToBracket} />
                 </Link>
             </div>
-
             <form className="form" onSubmit={handleSubmit}>
-                {/* Seu JSX do formulário continua o mesmo aqui... */}
                 <div className="input-container">
                     <div className="input-box">
                         <label htmlFor="firstName" className="form-label">Primeiro nome</label>
@@ -105,7 +84,6 @@ function CriarConta({ onAddUser }) {
                             <FontAwesomeIcon icon={faUser} />
                         </div>
                     </div>
-                    {/* ... outros input-box ... */}
                     <div className="input-box">
                         <label htmlFor="lastName" className="form-label">Último nome</label>
                         <div className="input-field">
@@ -141,14 +119,12 @@ function CriarConta({ onAddUser }) {
                         </div>
                     </div>
                 </div>
-
                 <div className="checkbox-container">
                     <input type="checkbox" name="terms" id="terms" className="form-checkbox" checked={formData.terms} onChange={handleChange} />
                     <label htmlFor="terms" className="form-label">
                         Eu li e aceito os <a href="/termos-de-uso" target="_blank" rel="noopener noreferrer">termos de uso</a>
                     </label>
                 </div>
-
                 <div className="radio-group">
                     <p className="form-label">Identificação:</p>
                     <div className="radio-option">
@@ -160,7 +136,6 @@ function CriarConta({ onAddUser }) {
                         <label htmlFor="agricultor" className="form-label">Sou agricultor</label>
                     </div>
                 </div>
-
                 <button type="submit" className="btn-default">
                     <FontAwesomeIcon icon={faCheck} />
                     <span>Criar conta</span>

@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ScrollReveal from 'scrollreveal';
 
-function MainContent() {
+function MainContent({ avaliacoes }) {
     useEffect(() => {
         const sr = ScrollReveal({
             distance: '20%',
             duration: 2000,
             reset: false,
         });
-
         sr.reveal('#cta', { origin: 'left' });
         sr.reveal('.dish', { origin: 'left', delay: 200 });
         sr.reveal('.feedback', {
             origin: 'right',
             duration: 1000,
             delay: 200,
+            interval: 200,
         });
     }, []);
 
@@ -33,10 +34,10 @@ function MainContent() {
                         campo em alimento na mesa de quem
                         mais precisa.
                     </p>
-                    <p className='description'>Acesse o link do youtube para demoranstração: <span><a href="https://www.youtube.com/watch?v=OgDrnX2bnVI">aqui</a></span></p>
+                    <p className='description'>Acesse o link do youtube para demonstração: <span><a href="https://www.youtube.com/watch?v=OgDrnX2bnVI" target="_blank" rel="noopener noreferrer">aqui</a></span></p>
                 </div>
                 <div id="banner">
-                    <img src="/images/hero.png" alt="Banner principal" />
+                    <img src="/images/hero.png" alt="Banner principal com uma cesta de vegetais" />
                 </div>
             </section>
 
@@ -47,18 +48,15 @@ function MainContent() {
                     <div className="dish">
                         <div className="dish-heart"></div>
                         <h3 className="dish-title">AgroTech</h3>
-                        <img src="/images/troca.png" alt="Ícone de troca" />
-                        <span className="dish-description">
+                        <img src="/images/troca.png" alt="Ícone de duas setas em círculo, simbolizando troca" />
+                        <div className="dish-description">
                             <h4>Conectando o agricultor com o consumidor</h4>
                             <p>
                                 A AgroTech é uma plataforma inovadora que conecta
                                 agricultores e consumidores,
                                 facilitando a troca de produtos frescos e saudáveis.
-                                Nossa missão é promover a
-                                agricultura sustentável e fortalecer a relação entre
-                                quem planta e quem consome.
                             </p>
-                        </span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -68,40 +66,26 @@ function MainContent() {
                     <h2 className="section-title">Depoimentos</h2>
                     <h3 className="section-subtitle">O que os clientes falam sobre nós</h3>
                     <div id="feedbacks">
-                        <div className="feedback">
-                            <img src="/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
-                            <div className="feedback-content">
-                                <p>
-                                    João da Silva
-                                    <span>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                </p>
-                                <p>"Muito bom o serviço! Consegui doar meus excedentes e ajudar quem precisa."</p>
+                        {avaliacoes.map((feedback) => (
+                            <div className="feedback" key={feedback.id}>
+                                <img src={feedback.avatar} className="feedback-avatar" alt={`Avatar de ${feedback.name}`} />
+                                <div className="feedback-content">
+                                    <p>
+                                        {feedback.name}
+                                        <span>
+                                            {Array.from({ length: feedback.stars }).map((_, index) => (
+                                                <i key={index} className="fa-solid fa-star"></i>
+                                            ))}
+                                        </span>
+                                    </p>
+                                    <p>"{feedback.comment}"</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="feedback">
-                            <img src="/images/avatar.png" className="feedback-avatar" alt="Avatar de cliente" />
-                            <div className="feedback-content">
-                                <p>
-                                    Benina Oliveira
-                                    <span>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                        <i className="fa-solid fa-star"></i>
-                                    </span>
-                                </p>
-                                <p>"Cumprem com o que prometem!"</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-                    <button className="btn-default">Ver mais avaliações</button>
+                    <Link to="/Avaliacoes" className="btn-default">
+                        Deixar uma avaliação
+                    </Link>
                 </div>
             </section>
         </main>

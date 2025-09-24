@@ -8,63 +8,94 @@ import AreaFazendeiro from './components/AreaFazendeiro.jsx';
 import Catalogo from './components/Catalogo.jsx';
 import Login from './components/Login.jsx';
 import CriarConta from './components/CriarConta.jsx';
+import Perfil from './components/Perfil.jsx';
+import Avaliacao from './components/Avaliacoes.jsx';
 
 function App() {
-  // Dados iniciais que serão usados apenas na primeira vez que o usuário abrir o site
+  // --- ESTADO DOS USUÁRIOS ---
   const initialUsers = [
-    { email: 'juan@gmail.com', password: '1234', userType: "agricultor" },
-    { email: 'maria@gmail.com', password: '1234', userType: "agricultor" },
-    { email: 'bruno@gmail.com', password: '1234', userType: "consumidor" },
-    { email: 'adriano@gmail.com', password: '1234', userType: "consumidor" },
-    { email: 'marcos@gmail.com', password: '1234', userType: "consumidor" }
+    { firstName: 'Juan', email: 'juan@gmail.com', password: '1234', userType: "agricultor" },
+    { firstName: 'Maria', email: 'maria@gmail.com', password: '1234', userType: "agricultor" },
+    { firstName: 'Bruno', email: 'bruno@gmail.com', password: '1234', userType: "consumidor" },
   ];
-
-  // O estado 'users' agora é inicializado com os dados do localStorage, se existirem.
   const [users, setUsers] = useState(() => {
-    const savedUsers = localStorage.getItem('users');
-    if (savedUsers) {
-      const parsedUsers = JSON.parse(savedUsers);
+    const saved = localStorage.getItem('users');
+    return saved ? JSON.parse(saved) : initialUsers;
+  });
+  useEffect(() => { localStorage.setItem('users', JSON.stringify(users)); }, [users]);
 
-      if (Array.isArray(parsedUsers) && parsedUsers.length > 0) {
-        return parsedUsers;
-      }
-    }
-    return initialUsers;
-  }
-  );
-
-  useEffect(() => {
-    localStorage.setItem('users', JSON.stringify(users));
-  }, [users]);
-
-  // A função para adicionar usuários
   const handleAddUser = (newUser) => {
     if (users.some(user => user.email === newUser.email)) {
       alert("Este e-mail já está cadastrado!");
       return false;
     }
     setUsers(prevUsers => [...prevUsers, newUser]);
-    console.log("Usuário adicionado e salvo no localStorage.");
     return true;
   };
 
+  // --- ESTADO DE LOGIN PERSISTENTE ---
+  const [loggedInUser, setLoggedInUser] = useState(() => {
+    const savedUser = localStorage.getItem('loggedInUser');
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
+
+  useEffect(() => {
+    if (loggedInUser) {
+      localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    } else {
+      localStorage.removeItem('loggedInUser');
+    }
+  }, [loggedInUser]);
+
+  const handleLogin = (user) => setLoggedInUser(user);
+  const handleLogout = () => setLoggedInUser(null);
+
+  // --- ESTADO DAS AVALIAÇÕES ---
+  const initialAvaliacoes = [
+    { id: 1, name: 'João da Silva', avatar: '/images/avatar.png', stars: 5, comment: 'Muito bom o serviço!' },
+    { id: 2, name: 'Benina Oliveira', avatar: '/images/avatar.png', stars: 5, comment: 'Cumprem com o que prometem!' },
+  ];
+  const [avaliacoes, setAvaliacoes] = useState(() => {
+    const saved = localStorage.getItem('avaliacoes');
+    return saved ? JSON.parse(saved) : initialAvaliacoes;
+  });
+  useEffect(() => { localStorage.setItem('avaliacoes', JSON.stringify(avaliacoes)); }, [avaliacoes]);
+
+  const handleAddAvaliacao = (novaAvaliacao) => {
+    setAvaliacoes(prev => [
+      ...prev,
+      {
+        id: Date.now(),
+        name: loggedInUser ? loggedInUser.firstName : 'Anônimo',
+        avatar: '/images/avatar.png',
+        stars: novaAvaliacao.nota,
+        comment: novaAvaliacao.comentario
+      }
+    ]);
+  };
+
+  // --- ESTADO DOS PRODUTOS ---
+  const [produtos, setProdutos] = useState([
+    { id: 1, nome: 'Milho', img: '/images/milho.png', desc: 'Descrição sobre a qualidade do milho.' },
+    { id: 2, nome: 'Tomate', img: '/images/tomate.png', desc: 'Descrição sobre a qualidade do tomate.' },
+    { id: 3, nome: 'Alface', img: '/images/alface.png', desc: 'Descrição sobre a qualidade do alface.' },
+    { id: 4, nome: 'Cenoura', img: '/images/cenoura.png', desc: 'Descrição sobre a qualidade da cenoura.' },
+    { id: 5, nome: 'Cebola', img: '/images/cebola.png', desc: 'Descrição sobre a qualidade da cebola.' },
+    { id: 6, nome: 'Abóbora', img: '/images/abobora.png', desc: 'Descrição sobre a qualidade da abóbora.' },
+  ]);
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header loggedInUser={loggedInUser} onLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Inicio />} />
+        <Route path="/" element={<Inicio avaliacoes={avaliacoes} />} />
         <Route path="/Central do agricultor" element={<AreaFazendeiro />} />
-        <Route path="/Catalogo de alimentos" element={<Catalogo />} />
+        <Route path="/Catalogo de alimentos" element={<Catalogo produtos={produtos} />} />
         <Route path="/Contato" element={<Contato />} />
-        <Route path="/Perfil" element={<Catalogo />} />
-        <Route
-          path="/Login"
-          element={<Login users={users} />}
-        />
-        <Route
-          path="/Criar conta"
-          element={<CriarConta onAddUser={handleAddUser} />}
-        />
+        <Route path="/Perfil" element={<Perfil user={loggedInUser} onLogout={handleLogout} />} />
+        <Route path="/Login" element={<Login users={users} onLogin={handleLogin} />} />
+        <Route path="/Criar conta" element={<CriarConta onAddUser={handleAddUser} />} />
+        <Route path="/Avaliacoes" element={<Avaliacao onAddAvaliacao={handleAddAvaliacao} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
