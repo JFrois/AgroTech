@@ -5,6 +5,7 @@
 @import url('testimonials.css');
 @import url('footer.css');
 
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -12,83 +13,97 @@
   font-family: 'Poppins', sans-serif;
 }
 
+/* Fundo da página */
 body {
   background: linear-gradient(135deg, #e9f5ec, #cde4d6);
   color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0rem;
 }
 
+/* Seção principal do perfil */
+.perfil {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+
+/* Caixa do perfil (dados do usuário) */
 .perfil-container {
   background: #fff;
-  width: 100%;
-  max-width: 450px;
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   text-align: center;
-  transition: transform 0.2s;
 }
 
-.perfil-container:hover {
-  transform: translateY(-5px);
-}
-
+/* Foto de perfil */
 .perfil-foto {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #5cb85c;
+  border: 2px solid #5cb85c;
   margin-bottom: 1rem;
 }
 
+/* Nome */
 .perfil-nome {
   font-size: 1.6rem;
   font-weight: 600;
   color: #2c3e50;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
+/* Bio */
 .perfil-bio {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
   margin-bottom: 1.2rem;
 }
 
+/* Informações do usuário */
 .perfil-info {
   text-align: left;
   margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f7fdf9;
 }
 
 .perfil-info p {
   font-size: 0.95rem;
-  margin: 0.3rem 0;
+  margin: 0.4rem 0;
 }
 
 .perfil-info strong {
   color: #2c3e50;
 }
 
-/* Botões de ação */
+/* Botões */
 .perfil-btn {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
+  padding: 0.7rem 1.4rem;
   margin: 0.3rem;
   border-radius: 25px;
   font-size: 0.95rem;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-editar {
   background: #5cb85c;
   color: #fff;
-  border: none;
 }
 
 .btn-editar:hover {
@@ -98,9 +113,80 @@ body {
 .btn-sair {
   background: #e74c3c;
   color: #fff;
-  border: none;
 }
 
 .btn-sair:hover {
   background: #c0392b;
+}
+
+/* Histórico */
+.historico {
+ background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  height: fit-content;
+  display: grid;
+}
+
+.label_historico {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Lista de produtos */
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.produto {
+  background: #fdfdfd;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.produto:hover {
+  transform: translateY(-4px);
+}
+
+.produto img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #5cb85c;
+}
+
+.dados_do_produto h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #2c3e50;
+}
+
+.dados_do_produto p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.2rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .perfil {
+    grid-template-columns: 1fr;
+  }
+  
+  .produtos {
+    grid-template-columns: 1fr;
+  }
 }
