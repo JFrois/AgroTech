@@ -9,8 +9,9 @@ import Catalogo from './components/Catalogo.jsx';
 import Login from './components/Login.jsx';
 import CriarConta from './components/CriarConta.jsx';
 import Perfil from './components/Perfil.jsx';
-// Corrigido: O nome do componente importado agora corresponde ao nome do arquivo
 import Avaliacoes from './components/Avaliacoes.jsx';
+import Swal from 'sweetalert2'
+
 
 function App() {
   // --- ESTADO DOS USUÁRIOS ---
@@ -27,7 +28,11 @@ function App() {
 
   const handleAddUser = (newUser) => {
     if (users.some(user => user.email === newUser.email)) {
-      alert("Este e-mail já está cadastrado!");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Este e-mail já está cadastrado!",
+      });
       return false;
     }
     setUsers(prevUsers => [...prevUsers, newUser]);

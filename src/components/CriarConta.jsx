@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faUser, faEnvelope, faEyeSlash, faCheck } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2'
+
 
 function CriarConta({ onAddUser }) {
     const navigate = useNavigate();
@@ -35,21 +37,42 @@ function CriarConta({ onAddUser }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // 1. Check if passwords match
         if (formData.password !== formData.confirmPassword) {
-            alert("As senhas não coincidem!");
-            return;
-        }
-        if (!formData.terms) {
-            alert("Você precisa aceitar os termos de uso.");
-            return;
-        }
-        if (!formData.userType) {
-            alert("Você precisa informar sua identificação: Consumidor ou Agricultor.");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "As senhas não coincidem!",
+            });
             return;
         }
 
+        // 2. Check if terms are accepted
+        if (!formData.terms) {
+            Swal.fire({
+                icon: "warning",
+                title: "Atenção",
+                text: "Você precisa aceitar os termos de uso.",
+            });
+            return;
+        }
+
+        // 3. Check if a user type is selected
+        if (!formData.userType) {
+            Swal.fire({
+                icon: "warning",
+                title: "Atenção",
+                text: "Você precisa informar sua identificação: Consumidor ou Agricultor.",
+            });
+            return;
+        }
+
+        // If all validations pass, proceed to create the user
         const newUser = {
-            firstName: formData.firstName, // Adicionado
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            birthdate: formData.birthdate,
             email: formData.email,
             password: formData.password,
             userType: formData.userType
@@ -58,12 +81,26 @@ function CriarConta({ onAddUser }) {
         const wasUserAdded = onAddUser(newUser);
 
         if (wasUserAdded) {
-            alert("Conta criada com sucesso!");
+            Swal.fire({
+                icon: "success",
+                title: "Sucesso!",
+                text: "Conta criada com sucesso!",
+                timer: 2000,
+                showConfirmButton: false
+            });
+
             if (formData.userType === 'agricultor') {
                 navigate('/Central do agricultor');
             } else {
                 navigate('/Catalogo de alimentos');
             }
+        } else {
+            // Handle the case where user creation failed (e.g., duplicate email)
+            Swal.fire({
+                icon: "error",
+                title: "Erro ao criar conta",
+                text: "O e-mail informado já pode estar em uso. Tente outro.",
+            });
         }
     };
 

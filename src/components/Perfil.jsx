@@ -1,12 +1,28 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'; 
 
 function Perfil({ user, onLogout }) {
     const navigate = useNavigate();
 
+    // 2. Modifique a função de logout
     const handleLogoutClick = () => {
-        onLogout();
-        navigate('/'); // Redireciona para a home após o logout
+        Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Sua sessão será encerrada.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, sair!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            // 3. Verifique se o usuário confirmou a ação
+            if (result.isConfirmed) {
+                onLogout();
+                navigate('/'); // Redireciona para a home após o logout
+            }
+        });
     };
 
     if (!user) {
@@ -36,6 +52,7 @@ function Perfil({ user, onLogout }) {
                             </ul>
                         </div>
                     </div>
+                    {/* O botão agora chama a nova função com o alerta */}
                     <button onClick={handleLogoutClick} className="btn-default" style={{ background: '#d9534f', marginTop: '20px' }}>
                         Sair
                     </button>

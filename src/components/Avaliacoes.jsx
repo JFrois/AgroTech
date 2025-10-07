@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faStar, faComment, faCheck } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2'
+
 
 // Corrigido: O nome da função agora é 'Avaliacoes' para corresponder ao nome do arquivo
 function Avaliacoes({ onAddAvaliacao }) {
@@ -16,11 +18,20 @@ function Avaliacoes({ onAddAvaliacao }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (formData.nota === '' || formData.comentario.trim() === '') {
-            alert('Por favor, preencha a nota e o comentário.');
+
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Por favor, preencha a nota e o comentário.",
+            });
             return;
         }
         onAddAvaliacao(formData);
-        alert('Obrigado pela sua avaliação!');
+        Swal.fire({
+            title: "Avaliação Enviada!",
+            text: "Obrigado pela sua avaliação!",
+            icon: "success"
+        });
         navigate('/');
     };
 

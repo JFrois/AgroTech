@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLeaf, faBars } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+
 
 function Header({ loggedInUser, onLogout }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +24,24 @@ function Header({ loggedInUser, onLogout }) {
     }, [isDarkMode]);
 
     const handleLogoutClick = () => {
-        onLogout();
-        closeMenu();
-        navigate('/');
+        // Adiciona o alerta de confirmação
+        Swal.fire({
+            title: 'Você tem certeza?',
+            text: "Sua sessão será encerrada.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, sair!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            // Se o usuário confirmar, executa o logout
+            if (result.isConfirmed) {
+                onLogout();
+                closeMenu(); // Fecha o menu mobile, se estiver aberto
+                navigate('/');
+            }
+        });
     };
 
     const loggedOutLinks = [
@@ -39,7 +56,7 @@ function Header({ loggedInUser, onLogout }) {
         { path: '/', label: 'Início' },
         { path: '/Catalogo de alimentos', label: 'Catálogo' },
         { path: '/Perfil', label: 'Meu Perfil' },
-        { path: '/Avaliacoes', label: 'Avaliar' }, // <-- Link adicionado
+        { path: '/Avaliacoes', label: 'Avaliar' },
         { path: '/Contato', label: 'Contato' },
     ];
 

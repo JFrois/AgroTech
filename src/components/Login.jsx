@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faEyeSlash, faRightToBracket, faCheck } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2'
+
 
 function Login({ users, onLogin }) {
   const navigate = useNavigate();
@@ -31,11 +33,19 @@ function Login({ users, onLogin }) {
     );
 
     if (foundUser) {
-      alert('Login realizado com sucesso!');
+      Swal.fire({
+        title: "Seja bem-vindo!",
+        text: "Login realizado com sucesso!",
+        icon: "success"
+      });
       onLogin(foundUser); // Atualiza o estado no App.jsx
       navigate('/Perfil'); // Navega para o perfil
     } else {
-      alert('E-mail ou senha incorretos. Tente novamente.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "E-mail ou senha incorretos. Tente novamente.",
+      });
     }
   };
 

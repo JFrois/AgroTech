@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import Swal from 'sweetalert2'
+
 
 emailjs.init("14op60W9c1h0olQZa");
 
@@ -29,12 +31,20 @@ function FormularioContato() {
         emailjs.send(serviceID, templateID, formData)
             .then((response) => {
                 console.log('SUCCESS!', response.status, response.text);
-                alert('Mensagem enviada com sucesso!');
+                Swal.fire({
+                    title: "Email enviado!",
+                    text: "Mensagem enviada com sucesso!!",
+                    icon: "success"
+                });
                 setFormData({ name: '', email: '', message: '' });
             })
             .catch((error) => {
                 console.error('FAILED...', error);
-                alert('Falha ao enviar mensagem. Tente novamente.');
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Falha ao enviar mensagem. Tente novamente!",
+                });
             })
             .finally(() => {
                 setIsSubmitting(false);
