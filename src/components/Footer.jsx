@@ -4,7 +4,7 @@ import '../styles/styles.css';
 
 function Footer() {
     const location = useLocation();
-    const isSpecialFooter = location.pathname === '/contato' || location.pathname === '/Login';
+    const isSpecialFooter = location.pathname === '/contato' || location.pathname === '/Login' || location.pathname === '/Contato';
 
     return (
         <footer className={isSpecialFooter ? 'footer-special' : 'footer-normal'}>

@@ -50,6 +50,7 @@ function FormularioContato() {
                 setIsSubmitting(false);
             });
     };
+  
 
     return (
         <section id="contact">
@@ -66,7 +67,7 @@ function FormularioContato() {
                     required
                 />
                 <input
-                    id="email"
+                     id="email"
                     name="email"
                     type="email"
                     placeholder="Seu email"
@@ -75,6 +76,8 @@ function FormularioContato() {
                     disabled={isSubmitting}
                     required
                 />
+                
+              
                 <textarea
                     id="message"
                     name="message"
