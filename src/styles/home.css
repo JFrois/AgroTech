@@ -42,18 +42,20 @@
     align-items: start;
     justify-content: end;
     width: 50%;
+    height: 40rem;
+    
     z-index: 6;
 }
 
 #banner img {
-    height: 50%;
+    height: 80%;
     width: fit-content;
 }
 
 .shape {
     background-color: var(--color-primary-2);
     width: 50%;
-    height: 50%;
+    height: 100%;
     position: absolute;
     border-radius: 40% 30% 0% 20%;
     top: 0;

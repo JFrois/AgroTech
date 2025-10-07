@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; 
 import '../styles/perfil.css';
 
-
-function Perfil({ user, onLogout }) {
+function Perfil({ user: initialUser, onLogout }) {
     const navigate = useNavigate();
+    const [user, setUser] = useState(initialUser); 
+    const [isEditing, setIsEditing] = useState(false);
 
-    // Função de logout com SweetAlert
+    const [nome, setNome] = useState(user.firstName || '');
+    const [bio, setBio] = useState(user.bio || '');
+    const [foto, setFoto] = useState(user.foto || '');
+
     const handleLogoutClick = () => {
         Swal.fire({
             title: 'Você tem certeza?',
@@ -26,7 +30,18 @@ function Perfil({ user, onLogout }) {
         });
     };
 
-    // Se não estiver logado
+    const handleSave = () => {
+        const updatedUser = {
+            ...user,
+            firstName: nome,
+            bio,
+            foto
+        };
+        setUser(updatedUser);
+        setIsEditing(false);
+        Swal.fire('Sucesso!', 'Perfil atualizado com sucesso.', 'success');
+    };
+
     if (!user) {
         return (
             <div style={{ textAlign: 'center', margin: '50px' }}>
@@ -39,46 +54,64 @@ function Perfil({ user, onLogout }) {
     return (
         <section className="perfil" id="perfil">
             <div className="perfil-container">
-                
-                {/* Foto de perfil */}
                 <div className="foto_perfil">
-                    <img 
-                        className="perfil-foto" 
-                        src={user.foto || "./public/images/fotousuario.jpg"} 
-                        alt="Foto de perfil" 
-                    />
-                </div>
-                <button type="button" className="perfil-btn btn-editar">
-                    Carregar foto de perfil
-                </button>
-
-                {/* Dados do usuário */}
-                <h2 className="perfil-nome">{user.firstName}</h2>
-                <p className="perfil-bio">
-                    {user.userType === "Farmer" 
-                        ? "Agricultor cadastrado na plataforma." 
-                        : "ONG/Consumidor ativo no AgroTech."}
-                </p>
-
-                <div className="perfil-info">
-                    <p><strong>Nome:</strong> {user.firstName}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                    <p><strong>Tipo:</strong> {user.userType}</p>
-                    <p><a href="#!">Alterar senha</a></p>
+                    {isEditing ? (
+                        <input 
+                            type="file" 
+                            accept="image/*" 
+                            onChange={e => {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    const reader = new FileReader();
+                                    reader.onloadend = () => setFoto(reader.result);
+                                    reader.readAsDataURL(file);
+                                }
+                            }} 
+                        />
+                    ) : (
+                        <img 
+                            className="perfil-foto" 
+                            src={foto || "./public/images/fotousuario.jpg"} 
+                            alt="Foto de perfil" 
+                        />
+                    )}
                 </div>
 
-                {/* Botão de sair */}
-                <button 
-                    onClick={handleLogoutClick} 
-                    className="perfil-btn btn-sair"
-                >
-                    Sair
-                </button>
+               {isEditing ? (
+    <>
+        <input 
+            type="text" 
+            value={nome} 
+            placeholder="Nome"       
+            onChange={e => setNome(e.target.value)} 
+        />
+        <textarea 
+            value={bio} 
+            placeholder="Digite sua bio"
+            onChange={e => setBio(e.target.value)} 
+        />
+    </>
+) : (
+    <h2 className="perfil-nome">
+        {user.firstName || 'Nome'}
+    </h2>
+)}
+
+<div className="perfil-info">
+    <p><strong>Email:</strong> {user.email}</p>
+    <p><strong>Tipo:</strong> {user.userType}</p>
+    <p><a href="#!">Alterar senha</a></p>
+</div>
+
+{isEditing ? (
+    <button onClick={handleSave} className="perfil-btn btn-editar">Salvar</button>
+     ) : (
+                    <button onClick={() => setIsEditing(true)} className="perfil-btn btn-editar">Editar Perfil</button>
+                )}
+                <button onClick={handleLogoutClick} className="perfil-btn btn-sair">Sair</button>
             </div>
-
-            {/* Histórico de produtos */}
             <div className="historico">
-                <h2 className="label_historico">Histórico de Compras/Vendas</h2>
+                <h2 className="label_historico">Histórico do Usuário</h2>
                 <div className="produtos">
                     <div className="produto">
                         <img src="./public/images/tomate.png" alt="Tomate" />
