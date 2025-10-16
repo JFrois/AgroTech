@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import Swal from 'sweetalert2'
-
+import '../styles/formulario_contato.css';
 
 emailjs.init("14op60W9c1h0olQZa");
 
@@ -54,50 +54,56 @@ function FormularioContato() {
 
     return (
         <section id="contact">
-            <h2>Entre em contato</h2>
-            <form id="form" onSubmit={handleSubmit}>
-                <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Seu nome"
-                    value={formData.name}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    required
-                />
-                <input
-                     id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Seu email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    required
-                />
-                
-              
-                <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Sua mensagem"
-                    minLength="30"
-                    maxLength="500"
-                    value={formData.message}
-                    onChange={handleChange}
-                    disabled={isSubmitting}
-                    required
-                ></textarea>
-                <button
-                    id="enviar"
-                    type="submit"
-                    className="btn-default"
-                    disabled={isSubmitting}
-                >
-                    {isSubmitting ? 'Enviando...' : 'Enviar'}
-                </button>
-            </form>
+            
+                <div className="formulario_contato">
+                <h2>Entre em contato</h2>
+                    <form id="form" onSubmit={handleSubmit}>
+                        <span id='nome_texto'>Nome</span>
+                        <input
+                            id="name"
+                            name="name"
+                            type="text"
+                            placeholder="Digite o seu nome aqui"
+                            value={formData.name}
+                            onChange={handleChange}
+                            disabled={isSubmitting}
+                            required
+                        />
+
+                        <span id='email_texto'>E-mail</span>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="exemplo@gmail.com"
+                            value={formData.email}
+                            onChange={handleChange}
+                            disabled={isSubmitting}
+                            required
+                        />
+                        
+                        <span id='mensagem_texto'>Sua mensagem</span>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Nos diga como podemos melhorar o nosso serviço..."
+                            minLength="30"
+                            maxLength="500"
+                            value={formData.message}
+                            onChange={handleChange}
+                            disabled={isSubmitting}
+                            required
+                        ></textarea>
+                        <button
+                            id="enviar_form"
+                            type="submit"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? 'Enviando...' : 'Enviar'}
+                    </button>
+                    <spam id="feedback">Obrigado pelo feedback!</spam>
+                </form>
+            </div>
         </section>
     );
 }
