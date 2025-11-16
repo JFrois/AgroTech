@@ -19,6 +19,7 @@ function App() {
     { firstName: 'Juan', email: 'juan@gmail.com', password: '1234', userType: "agricultor" },
     { firstName: 'Maria', email: 'maria@gmail.com', password: '1234', userType: "agricultor" },
     { firstName: 'Bruno', email: 'bruno@gmail.com', password: '1234', userType: "consumidor" },
+    { firstName: 'Marcos', email: 'marcos@gmail.com', password: '1234', userType: "consumidor" },
   ];
   const [users, setUsers] = useState(() => {
     const saved = localStorage.getItem('users');
@@ -98,7 +99,6 @@ function App() {
         <Route path="/Perfil" element={<Perfil user={loggedInUser} onLogout={handleLogout} />} />
         <Route path="/Login" element={<Login users={users} onLogin={handleLogin} />} />
         <Route path="/Criar conta" element={<CriarConta onAddUser={handleAddUser} />} />
-        {/* Corrigido: Usando o nome correto do componente importado */}
         <Route path="/Avaliacoes" element={<Avaliacoes onAddAvaliacao={handleAddAvaliacao} />} />
       </Routes>
       <Footer />

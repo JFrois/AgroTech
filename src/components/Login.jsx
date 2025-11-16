@@ -76,6 +76,11 @@ function Login({ users, onLogin }) {
           <FontAwesomeIcon icon={faCheck} />
           <span>Logar</span>
         </button>
+        <p>Não tem conta? Crie uma:</p>
+        <button type="button" onClick={() => navigate("/Criar conta")} className="btn-default">
+          <FontAwesomeIcon icon={faCheck} />
+          <span>Criar conta</span>
+        </button>
       </form>
     </main>
   );

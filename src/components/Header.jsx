@@ -44,6 +44,23 @@ function Header({ loggedInUser, onLogout }) {
         });
     };
 
+    const consumerLinks = [
+    { path: '/', label: 'Início' },
+    { path: '/Catalogo de alimentos', label: 'Catálogo' },
+    { path: '/Perfil', label: 'Meu Perfil' },
+    { path: '/Avaliacoes', label: 'Avaliar' },
+    { path: '/Contato', label: 'Contato' },
+    ];
+
+    const farmerLinks = [
+        { path: '/', label: 'Início' },
+        { path: '/Central do agricultor', label: 'Central do Agricultor' },
+        { path: '/Perfil', label: 'Meu Perfil' },
+        { path: '/Avaliacoes', label: 'Avaliar' },
+        { path: '/Contato', label: 'Contato' },
+    ];
+
+
     const loggedOutLinks = [
         { path: '/', label: 'Início' },
         { path: '/Criar conta?tipo=agricultor', label: 'Sou agricultor' },
@@ -61,26 +78,40 @@ function Header({ loggedInUser, onLogout }) {
     ];
 
     const renderNavLinks = (isMobile = false) => {
-        const linksToRender = loggedInUser ? loggedInLinks : loggedOutLinks;
-        return (
-            <>
-                {linksToRender.map((link) => (
-                    <li className="nav-item" key={link.label}>
-                        <NavLink to={link.path} onClick={isMobile ? closeMenu : undefined} end={link.path === '/'}>
-                            {link.label}
-                        </NavLink>
-                    </li>
-                ))}
-                {loggedInUser && (
-                    <li className="nav-item">
-                        <a href="#!" onClick={handleLogoutClick} style={{ cursor: 'pointer' }}>
-                            Sair
-                        </a>
-                    </li>
-                )}
-            </>
-        );
-    };
+    let linksToRender;
+
+    if (!loggedInUser) {
+        linksToRender = loggedOutLinks;
+    } else if (loggedInUser.userType === "consumidor") {
+        linksToRender = consumerLinks;
+    } else if (loggedInUser.userType === "agricultor") {
+        linksToRender = farmerLinks;
+    }
+
+    return (
+        <>
+            {linksToRender.map((link) => (
+                <li className="nav-item" key={link.label}>
+                    <NavLink
+                        to={link.path}
+                        onClick={isMobile ? closeMenu : undefined}
+                        end={link.path === '/'}
+                    >
+                        {link.label}
+                    </NavLink>
+                </li>
+            ))}
+
+            {loggedInUser && (
+                <li className="nav-item">
+                    <a href="#!" onClick={handleLogoutClick} style={{ cursor: 'pointer' }}>
+                        Sair
+                    </a>
+                </li>
+            )}
+        </>
+    );
+};
 
     return (
         <header className="header_principal">
