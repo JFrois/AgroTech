@@ -101,7 +101,7 @@ function FormularioContato() {
                         >
                             {isSubmitting ? 'Enviando...' : 'Enviar'}
                     </button>
-                    <spam id="feedback">Obrigado pelo feedback!</spam>
+                    <span id="feedback">Obrigado pelo feedback!</span>
                 </form>
             </div>
         </section>
