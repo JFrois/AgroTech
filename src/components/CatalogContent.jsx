@@ -24,13 +24,11 @@ function CatalogContent({ produtos, onSave }) {
       <section className="catalog" id="catalog">
         <div className="content">
           
-          {/* Título */}
           <div className="title-wrapper-catalog" style={{ marginBottom: "20px" }}>
             <p style={{ marginBottom: "4px" }}>Encontre o que você precisa</p>
             <h3 style={{ fontWeight: "600" }}>Catálogo Agrícola</h3>
           </div>
 
-          {/* Campo de busca */}
           <div 
             className="filter-card" 
             style={{ 
@@ -73,7 +71,6 @@ function CatalogContent({ produtos, onSave }) {
             </button>
           </div>
 
-          {/* Listagem */}
           <div 
             className="card-wrapper"
             style={{
@@ -158,7 +155,6 @@ function CatalogContent({ produtos, onSave }) {
         </div>
       </section>
 
-      {/* Modal */}
       {produtoSelecionado && (
         <AdicionarProduto
           produto={produtoSelecionado}

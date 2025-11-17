@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from 'react'; // 1. Importar useEffect
+import React, { useState, useEffect } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'; 
 import '../styles/perfil.css';
 
-// 2. Receber a prop 'historico' (com valor padrão [] para evitar erros)
 function Perfil({ user: initialUser, onLogout, historico = [] }) {
     const navigate = useNavigate();
     const [user, setUser] = useState(initialUser); 
     const [isEditing, setIsEditing] = useState(false);
-
-    // Estados para os campos de edição
     const [nome, setNome] = useState(initialUser?.firstName || '');
     const [bio, setBio] = useState(initialUser?.bio || '');
     const [foto, setFoto] = useState(initialUser?.foto || '');
 
-    // 3. Adicionar este useEffect
-    // Isso garante que o perfil (incluindo o histórico) 
-    // seja atualizado se o 'loggedInUser' no App.js mudar.
     useEffect(() => {
         setUser(initialUser);
         if (initialUser) {
@@ -24,7 +18,7 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
             setBio(initialUser.bio || '');
             setFoto(initialUser.foto || '');
         }
-    }, [initialUser]); // Executa toda vez que o 'initialUser' (prop) mudar
+    }, [initialUser]);
 
     const handleLogoutClick = () => {
         Swal.fire({
@@ -52,13 +46,10 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
             foto
         };
         setUser(updatedUser);
-        // NOTA: Isso só salva localmente. Você precisará de uma 
-        // função do App.js (como onSaveProfile) para salvar permanentemente.
         setIsEditing(false);
         Swal.fire('Sucesso!', 'Perfil atualizado com sucesso.', 'success');
     };
 
-    // 4. Mudar o guard para usar a prop 'initialUser'
     if (!initialUser) {
         return (
             <div style={{ textAlign: 'center', margin: '50px' }}>
@@ -88,7 +79,6 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
                     ) : (
                         <img 
                             className="perfil-foto" 
-                            // 5. Corrigido o caminho da imagem (removido ./public)
                             src={foto || "/images/fotousuario.jpg"} 
                             alt="Foto de perfil" 
                         />
@@ -110,7 +100,6 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
                         />
                     </>
                 ) : (
-                    // 6. Usar o nome do 'user' do estado local (que é sincronizado)
                     <h2 className="perfil-nome">
                         {user?.firstName || 'Nome'}
                     </h2>
@@ -130,18 +119,14 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
                 <button onClick={handleLogoutClick} className="perfil-btn btn-sair">Sair</button>
             </div>
             
-            {/* --- 7. SEÇÃO DE HISTÓRICO ATUALIZADA --- */}
             <div className="historico">
                 <h2 className="label_historico">Histórico do Usuário</h2>
                 <div className="produtos">
                     
-                    {/* Verifica se o histórico (da prop) tem itens */}
+
                     {historico && historico.length > 0 ? (
-                        
-                        // Mapeia a prop 'historico'
                         historico.map(item => (
                             <div className="produto" key={item.idHistorico || item.id}>
-                                {/* 8. Corrigido o caminho da imagem do item */}
                                 <img src={item.img} alt={item.nome} />
                                 <div className="dados_do_produto">
                                     <h3>{item.nome} (Qtd: {item.quantidade})</h3>
@@ -151,7 +136,6 @@ function Perfil({ user: initialUser, onLogout, historico = [] }) {
                             </div>
                         ))
                     ) : (
-                        // Mensagem para quando não há itens
                         <p style={{ textAlign: 'center', width: '100%', padding: '20px' }}>
                             Seu histórico de pedidos está vazio.
                         </p>

@@ -87,7 +87,6 @@ function App() {
     { id: 9, nome: 'Rabanete', img: '/images/rabanete.png', desc: 'Rabanetes frescos e picantes, adicionam um toque crocante à sua salada.' },
   ]);
 
-  // Função principal: adicionar produto ao histórico do usuário correto
   const handleAdicionarAoHistorico = (produtoCompleto) => {
     if (!loggedInUser) {
       Swal.fire('Atenção!', 'Você precisa estar logado para adicionar produtos.', 'warning');
@@ -106,11 +105,9 @@ function App() {
 
     setUsers(novosUsers);
 
-    // Busca a versão atualizada no array "users" e seta como loggedInUser
     const userAtualizado = novosUsers.find(u => u.email === loggedInUser.email);
     setLoggedInUser(userAtualizado);
 
-    // Debug: log no console para conferir
     console.log('Salvou no users (localStorage):', userAtualizado);
 
     Swal.fire('Sucesso!', `${produtoCompleto.nome} foi adicionado ao seu histórico!`, 'success');

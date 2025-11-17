@@ -17,7 +17,6 @@ function AdicionarProduto({ produto, onClose, onSave }) {
     if (typeof onSave === 'function') {
       onSave(dadosCompletos);
     }
-    // fechar o modal localmente
     if (typeof onClose === 'function') onClose();
   };
 
