@@ -95,6 +95,16 @@
     font-weight: 500;
 }
 
+.input-field #email{
+    align-items: center;
+    background-color:var(--color-primary-1) ;
+    border-radius: 8px;
+    border: 0px solid ;
+    overflow: hidden;
+    box-shadow: none;
+}
+
+
 .input-field {
     display: flex;
     align-items: center;

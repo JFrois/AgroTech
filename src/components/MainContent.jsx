@@ -10,13 +10,13 @@ function MainContent({ avaliacoes }) {
             reset: false,
         });
         sr.reveal('#cta', { origin: 'left' });
-        sr.reveal('.dish', { origin: 'left', delay: 200 });
-        sr.reveal('.feedback', {
-            origin: 'right',
-            duration: 1000,
-            delay: 200,
-            interval: 200,
-        });
+        //sr.reveal('.dish', { origin: 'left', delay: 200 });
+        //sr.reveal('.feedback', {
+        //origin: 'right',
+        // duration: 1000,
+        // delay: 200,
+        // interval: 200,
+        // });
     }, []);
 
     return (
@@ -34,7 +34,7 @@ function MainContent({ avaliacoes }) {
                         campo em alimento na mesa de quem
                         mais precisa.
                     </p>
-                    <p className='description'>Acesse o link do youtube para demonstração: <span><a href="https://www.youtube.com/watch?v=OgDrnX2bnVI" target="_blank" rel="noopener noreferrer">aqui</a></span></p>
+                    <p className='description'>Acesse o link do youtube para demonstração: <span><a href="https://www.youtube.com/watch?v=Feg_THOlC28" target="_blank" rel="noopener noreferrer">aqui</a></span></p>
                 </div>
                 <div id="banner">
                     <img src="/images/hero.png" alt="Banner principal com uma cesta de vegetais" />
@@ -42,13 +42,15 @@ function MainContent({ avaliacoes }) {
             </section>
 
             <section id="menu1">
-                <h2 className="section-title">Sobre nós</h2>
-                <h3 className="section-subtitle">Conheça mais sobre a AgroTech</h3>
+                <div id="menu-title">
+                    <h2 className="section-title">Sobre nós</h2>
+                    <h3 className="section-subtitle">Conheça mais sobre a AgroTech</h3>
+                </div>
                 <div id="dishes">
                     <div className="dish">
                         <div className="dish-heart"></div>
                         <h3 className="dish-title">AgroTech</h3>
-                        <img src="/images/troca.png" alt="Ícone de duas setas em círculo, simbolizando troca" />
+                        <img className="dish-image" src="/images/troca.png" alt="Ícone de duas setas em círculo, simbolizando troca" />
                         <div className="dish-description">
                             <h4>Conectando o agricultor com o consumidor</h4>
                             <p>

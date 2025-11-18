@@ -1,13 +1,12 @@
 import React from 'react';
-import CatalogContent from "./CatalogContent";
-import '../styles/catalogo.css';
+import CatalogContent from './CatalogContent';
 
-function Catalogo({ produtos }) {
-      return (
-            <>
-                  <CatalogContent produtos={produtos} />
-            </>
-      );
+function Catalogo({ produtos, onSaveProduto }) {
+  return (
+    <div>
+      <CatalogContent produtos={produtos} onSave={onSaveProduto} />
+    </div>
+  );
 }
 
 export default Catalogo;
