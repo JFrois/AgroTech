@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faEye, faEyeSlash, faRightToBracket, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'
+import "../styles/Login.css";
+
 
 
 function Login({ users, onLogin }) {
@@ -47,9 +49,18 @@ function Login({ users, onLogin }) {
         text: "E-mail ou senha incorretos. Tente novamente.",
       });
     }
+    useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    
+    // Restaura quando o componente desmonta
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
   };
 
   return (
+    <div className="login-page-wrapper">
     <main className="form-container">
       <div className="form-header">
         <h1 className="form-title">Login</h1>
@@ -83,6 +94,7 @@ function Login({ users, onLogin }) {
         </button>
       </form>
     </main>
+    </div>
   );
 }
 

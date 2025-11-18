@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Contato from './components/Contato.jsx';
@@ -11,6 +11,19 @@ import CriarConta from './components/CriarConta.jsx';
 import Perfil from './components/Perfil.jsx';
 import Avaliacoes from './components/Avaliacoes.jsx';
 import Swal from 'sweetalert2';
+import './styles/App.css';
+
+function FooterWrapper() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/Login';
+  const isCatalogoPage = location.pathname === '/CatalogContent';
+  
+  let footerClass = '';
+  if (isLoginPage) footerClass = 'fixed-footer login-footer';
+  if (isCatalogoPage) footerClass = 'fixed-footer catalogo-footer';
+  
+  return <Footer className={footerClass} />;
+}
 
 function App() {
   const initialUsers = [
@@ -150,7 +163,7 @@ function App() {
         <Route path="/Criar conta" element={<CriarConta onAddUser={handleAddUser} />} />
         <Route path="/Avaliacoes" element={<Avaliacoes onAddAvaliacao={handleAddAvaliacao} />} />
       </Routes>
-      <Footer />
+      <FooterWrapper />
     </BrowserRouter>
   );
 }
