@@ -34,7 +34,7 @@ function MainContent({ avaliacoes }) {
                         campo em alimento na mesa de quem
                         mais precisa.
                     </p>
-                    <p className='description'>Acesse o link do youtube para demonstração: <span><a href="https://www.youtube.com/watch?v=Feg_THOlC28" target="_blank" rel="noopener noreferrer">aqui</a></span></p>
+                    <p className='description'>Acesse o link do youtube para demonstração: <span><a href="https://www.youtube.com/watch?v=Tio3Z3yv31g" target="_blank" rel="noopener noreferrer">aqui</a></span></p>
                 </div>
                 <div id="banner">
                     <img src="/images/hero.png" alt="Banner principal com uma cesta de vegetais" />
